@@ -1,0 +1,178 @@
+Music Player with Playlist Management
+
+Name:     Angel Theresa Paul
+Roll No:  15
+Course:  Btech - Computer Science Engg. 
+Date:      11-07-2024
+
+OVERVIEW
+1.	Purpose: Manage a music playlist with basic playback controls. 
+
+2.	Features:
+	Add songs to the playlist
+	List all songs in the playlist
+	Play the current song
+	Pause the current song
+	Stop playback and reset to the beginning
+	Skip to the next song
+	Quit the program
+3.	 Data Structure: 
+	Uses a struct 'Playlist' to store songs, track count, current song, and playing status
+	Maximum of 10 songs, each with a maximum length of 30 characters
+4.	 User Interface: 
+	Simple text-based menu system
+	Single-letter commands for each action
+5.	Functions: 
+	add(): Adds a new song to the playlist
+	list(): Displays all songs in the playlist
+	play(): Starts playing the current song
+	pause(): Pauses the current song
+	stop(): Stops playback and resets to the first song
+	next(): Moves to the next song in the playlist
+6.	Main Loop: 
+	Continuously prompts for user input and executes corresponding functions
+	Runs until the user chooses to quit
+PROBLEM STATEMENT
+Design and implement a simple playlist manager program in C that allows users to create and manage a music playlist.
+OVERVIEW
+Develop a simple music player with play, pause, stop functions, and functionalities to manage playlists
+
+
+SYSTEM REQUIREMENTS
+
+- Hardware Requirements:
+    - A computer with a compatible operating system (Windows, macOS, or Linux)
+    - A C compiler (such as GCC)
+- Software Requirements:
+    - A C development environment (such as Visual Studio Code or IntelliJ IDEA)
+    - A terminal or command prompt to run the program
+
+DESIGN AND DEVELOPMENT
+- Description of the Program Logic:
+    - The program is a simple music player management system that allows users to add songs, create playlists, add songs to playlists, play songs, pause songs, stop songs, and display playlists.
+    - The program uses structures to represent songs and playlists, and arrays to store the data.
+    - The program uses a switch-case statement to handle user input and perform the corresponding actions.
+- Flowchart or Pseudocode:
+
+  +---------------------------------------+
+  |                                         
+  |  Main Menu                             
+  |  1. Add Song                           
+  |  2. Create Playlist                    
+  |  3. Add Song to Playlist              
+  |  4. Play Song                          
+  |  5. Pause Song                         
+  |  6. Stop Song                          
+  |  7. Display Playlists                 
+  |  8. Exit                               
+  |                                         
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Add Song                              
+  |  Input Song Title, Artist, Album       
+  |  Add Song to Song Array                
+  |                                         
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Create Playlist                       
+  |  Input Playlist Name                   
+  |  Add Playlist to Playlist Array        
+  |                                        
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Add Song to Playlist                  
+  |  Input Playlist ID, Song ID           
+  |  Add Song to Playlist                  
+  |                                         
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Play Song                             
+  |  Input Song ID                         
+  |  Play Song                             
+  |                                         
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Pause Song                            
+  |  Pause Current Song                    
+  |                                        
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Stop Song                             
+  |  Stop Current Song                     
+  |                                         
+  +---------------------------------------+
+           |
+           |
+           v
+  +---------------------------------------+
+  |                                         
+  |  Display Playlists                     
+  |  Display Playlist Information          
+  |                                         
+  +---------------------------------------+
+
+
+TESTING AND RESULT
+- Test Cases:
+    - Add a song
+    - Create a playlist
+    - Add a song to a playlist
+    - Play a song
+    - Pause a song
+    - Stop a song
+    - Display playlists
+- Output Screenshots or Results:
+
+MUSIC PLAYER MANAGEMENT SYSTEM
+1. Add a new song
+2. Create a new playlist
+3. Add song to playlist
+4. Play a song
+5. Pause current song
+6. Stop current song
+7. Display playlists
+8. Exit
+Enter your choice: 1
+
+Enter song title: Happy
+Enter artist name: Pharrell Williams
+Enter album name: G I R L
+Song added successfully...
+
+...
+
+Available Playlists:
+ID: 1, Name: My Favorites, Songs: 1
+
+- Discussion of Results:
+    - The program successfully adds songs, creates playlists, adds songs to playlists, plays songs, pauses songs, stops songs, and displays playlists.
+    - The program uses a simple menu-driven interface to interact with the user.
+    - The program uses structures and arrays to store and manage the data.
+
+CONCLUSION
+This C program demonstrates a basic music player management system that allows users to manage songs and playlists. The program provides a menu-driven interface for users to add songs, create playlists, add songs to playlists, play songs, pause songs, stop songs, and display playlists. The program utilizes structures to define songs and playlists, and arrays to store them. The program also implements functions for each menu option, making it a comprehensive and functional music player management system. This program showcases the capabilities of C programming language in building applications that require data management and user interaction. The program's functionality can be expanded and improved further by adding more features, such as searching songs, sorting playlists, and saving data to files. Overall, this program serves as a useful example for beginners and intermediate programmers to learn and understand the concepts of programming in C, and to develop their skills in building practical applications.
+
