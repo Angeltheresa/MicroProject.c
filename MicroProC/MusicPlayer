@@ -1,0 +1,192 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_TITLE 50
+#define MAX_ARTIST 50
+#define MAX_ALBUM 50
+#define MAX_PLAYLIST_NAME 50
+#define MAX_SONGS 100
+#define MAX_PLAYLISTS 10
+
+struct Song {
+    int id;
+    char title[MAX_TITLE];
+    char artist[MAX_ARTIST];
+    char album[MAX_ALBUM];
+};
+
+struct Playlist {
+    int id;
+    char name[MAX_PLAYLIST_NAME];
+    int song_ids[MAX_SONGS];
+    int song_count;
+};
+
+struct Song songs[MAX_SONGS];
+struct Playlist playlists[MAX_PLAYLISTS];
+int song_count = 0;
+int playlist_count = 0;
+int current_song_id = -1;
+
+void add_song();
+void create_playlist();
+void add_to_playlist();
+void play_song();
+void pause_song();
+void stop_song();
+void display_playlists();
+
+int main() {
+    int choice;
+    while (1) {
+        printf("\n\nMUSIC PLAYER MANAGEMENT SYSTEM\n");
+        printf("1. Add a new song\n");
+        printf("2. Create a new playlist\n");
+        printf("3. Add song to playlist\n");
+        printf("4. Play a song\n");
+        printf("5. Pause current song\n");
+        printf("6. Stop current song\n");
+        printf("7. Display playlists\n");
+        printf("8. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                add_song();
+                break;
+            case 2:
+                create_playlist();
+                break;
+            case 3:
+                add_to_playlist();
+                break;
+            case 4:
+                play_song();
+                break;
+            case 5:
+                pause_song();
+                break;
+            case 6:
+                stop_song();
+                break;
+            case 7:
+                display_playlists();
+                break;
+            case 8:
+                exit(0);
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+    return 0;
+}
+
+void add_song() {
+    if (song_count >= MAX_SONGS) {
+        printf("Song library is full!\n");
+        return;
+    }
+    
+    struct Song new_song;
+    new_song.id = song_count + 1;
+    
+    printf("Enter song title: ");
+    scanf("%s", new_song.title);
+    printf("Enter artist name: ");
+    scanf("%s", new_song.artist);
+    printf("Enter album name: ");
+    scanf("%s", new_song.album);
+
+    songs[song_count++] = new_song;
+    printf("Song added successfully...\n");
+}
+
+void create_playlist() {
+    if (playlist_count >= MAX_PLAYLISTS) {
+        printf("Maximum number of playlists reached!\n");
+        return;
+    }
+
+    struct Playlist new_playlist;
+    new_playlist.id = playlist_count + 1;
+    new_playlist.song_count = 0;
+
+    printf("Enter playlist name: ");
+    scanf("%s", new_playlist.name);
+
+    playlists[playlist_count++] = new_playlist;
+    printf("Playlist created successfully...\n");
+}
+
+void add_to_playlist() {
+    int playlist_id, song_id;
+    printf("Enter playlist ID: ");
+    scanf("%d", &playlist_id);
+    printf("Enter song ID to add: ");
+    scanf("%d", &song_id);
+
+    if (playlist_id < 1 || playlist_id > playlist_count) {
+        printf("Invalid playlist ID!\n");
+        return;
+    }
+
+    if (song_id < 1 || song_id > song_count) {
+        printf("Invalid song ID!\n");
+        return;
+    }
+
+    struct Playlist *playlist = &playlists[playlist_id - 1];
+    if (playlist->song_count >= MAX_SONGS) {
+        printf("Playlist is full!\n");
+        return;
+    }
+
+    playlist->song_ids[playlist->song_count++] = song_id;
+    printf("Song added to playlist successfully...\n");
+}
+
+void play_song() {
+    int song_id;
+    printf("Enter song ID to play: ");
+    scanf("%d", &song_id);
+
+    if (song_id < 1 || song_id > song_count) {
+        printf("Invalid song ID!\n");
+        return;
+    }
+
+    current_song_id = song_id;
+    printf("Playing song: %s by %s\n", songs[song_id - 1].title, songs[song_id - 1].artist);
+}
+
+void pause_song() {
+    if (current_song_id == -1) {
+        printf("No song is currently playing.\n");
+    } else {
+        printf("Pausing current song: %s\n", songs[current_song_id - 1].title);
+    }
+}
+
+void stop_song() {
+    if (current_song_id == -1) {
+        printf("No song is currently playing.\n");
+    } else {
+        printf("Stopping current song: %s\n", songs[current_song_id - 1].title);
+        current_song_id = -1;
+    }
+}
+
+void display_playlists() {
+    if (playlist_count == 0) {
+        printf("No playlists available.\n");
+        return;
+    }
+
+    printf("\nAvailable Playlists:\n");
+    for (int i = 0; i < playlist_count; i++) {
+        printf("ID: %d, Name: %s, Songs: %d\n", 
+               playlists[i].id, playlists[i].name, playlists[i].song_count);
+    }
+}
